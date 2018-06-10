@@ -1,0 +1,26 @@
+HLR:<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://ispp.com.cn/ispp_npi/">
+	<SOAP-ENV:Body>
+		<ns2:root>
+			<msg_head>
+				<time>2017-07-10 10:30:04</time>
+				<from>192.168.2.111</from>
+				<to>192.168.1.100</to>
+				<msg_type>create user</msg_type>
+				<serial>20170710102900086</serial>
+			</msg_head>
+			<interface_msg>
+				<msg_response>
+					<ResponseClass Name="Response">
+						<ResponseSubClass Name="DELETEMOResponse">
+							<ResultCode>101040</ResultCode>
+							<ResultDescr>ISDN is unavailable</ResultDescr>
+						</ResponseSubClass>
+					</ResponseClass>
+				</msg_response>
+			</interface_msg>
+		</ns2:root>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
