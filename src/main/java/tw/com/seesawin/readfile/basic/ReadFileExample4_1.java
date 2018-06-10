@@ -8,7 +8,6 @@ import org.apache.commons.io.IOUtils;
 
 
 public class ReadFileExample4_1 {
-	private static final String FILENAME = "C:\\test\\filename.txt";
 
 	public static void main(String[] args) {
 		try {
