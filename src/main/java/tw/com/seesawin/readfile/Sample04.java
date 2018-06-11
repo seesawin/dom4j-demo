@@ -1,44 +1,29 @@
-package tw.com.seesawin.readfile.xml.d4j;
+package tw.com.seesawin.readfile;
 
-import java.io.File;
 import java.util.List;
 
-import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.Element;
 import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
 
-public class DeployFileLoaderSample5 {
+import tw.com.seesawin.readfile.util.FileReader;
 
-	/**
-	 * dom4j object model representation of a xml document.
-	 * 
-	 * Note: We use the interface(!) not its implementation
-	 */
-	private Document doc;
-	private Element root;
+public class Sample04 extends AbstractSample{
 
 	public static void main(String[] args) throws DocumentException {
 		// init
-		DeployFileLoaderSample5 sample = new DeployFileLoaderSample5();
-		sample.parseWithSAX(new File("C:\\test\\test01.xml"));
+		Sample04 sample = new Sample04();
+		
+		// read from absolute path
+//		sample.parseWithSAX(new File("C:\\test\\test01.xml"));
+		
+		// read from this project's resource folder
+		sample.parseWithSAX(FileReader.getFileWithUtil(Sample04.class, "NZ_PCH29_538M_Channel_ONE_Rating-AO-0_020912-1.xml"));
 
 		// process
-		sample.browseRootChildren();
+		sample.execute();
 	}
 
-	/**
-	 * Loads a document from a file.
-	 *
-	 * @throw a org.dom4j.DocumentException occurs whenever the buildprocess fails.
-	 */
-	public void parseWithSAX(File aFile) throws DocumentException {
-		SAXReader xmlReader = new SAXReader();
-		this.doc = xmlReader.read(aFile);
-	}
-
-	public void browseRootChildren() {
+	public void execute() {
 		// 1.定位root位子
 		// 2.取得指定路徑的Node
 		Node rootNode = doc.selectSingleNode("//MPEG-TABLES/SDT");
