@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.dom4j.Node;
 
 import tw.com.seesawin.readfile.util.FileReader;
 
@@ -22,7 +23,7 @@ public class Sample01 extends AbstractSample {
 		System.out.println("-------------------------------------------------");
 		sample.iterateRootChildren();
 		
-		System.out.println("-------------------------------------------------");
+		System.out.println("111-------------------------------------------------");
 		sample.iterateRootChildren("PMTs");
 	}
 
@@ -36,6 +37,12 @@ public class Sample01 extends AbstractSample {
 		while (elementIterator.hasNext()) {
 			Element element = (Element) elementIterator.next();
 			System.out.println(element.getName());
+			
+//			Iterator it2 = element.elementIterator();
+//			while (it2.hasNext()) {
+//				Element element2 = (Element) it2.next();
+//				System.out.println(element2.getName());
+//			}
 		}
 	}
 	
@@ -44,7 +51,18 @@ public class Sample01 extends AbstractSample {
 		Iterator elementIterator = root.elementIterator(aFilterElementName);
 		while (elementIterator.hasNext()) {
 			Element element = (Element) elementIterator.next();
-			System.out.println(element.getName());
+			System.out.println("------" + element.getName());
+			
+			Iterator it2 = element.elementIterator();
+			while (it2.hasNext()) {
+				Element element2 = (Element) it2.next();
+				System.out.println(element2.getName());
+				
+				Node n = element2.selectSingleNode("SERVICE-NUMBER");
+				if(n != null) {
+					System.out.println(n.getName() + " : " + n.getStringValue());
+				}
+			}
 		}
 	}
 
